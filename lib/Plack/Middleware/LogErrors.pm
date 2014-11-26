@@ -1,15 +1,10 @@
 use strict;
 use warnings;
 package Plack::Middleware::LogErrors;
-{
-  $Plack::Middleware::LogErrors::VERSION = '0.001';
-}
-# git description: e135274
-
-BEGIN {
-  $Plack::Middleware::LogErrors::AUTHORITY = 'cpan:ETHER';
-}
+# git description: v0.001-13-g28c86df
+$Plack::Middleware::LogErrors::VERSION = '0.002';
 # ABSTRACT: Map psgi.errors to psgix.logger or other logger
+# KEYWORDS: plack middleware errors logging environment I/O handle
 
 use parent 'Plack::Middleware';
 
@@ -46,14 +41,8 @@ sub __isa_coderef
 }
 
 package Plack::Middleware::LogErrors::LogHandle;
-{
-  $Plack::Middleware::LogErrors::LogHandle::VERSION = '0.001';
-}
-# git description: e135274
-
-BEGIN {
-  $Plack::Middleware::LogErrors::LogHandle::AUTHORITY = 'cpan:ETHER';
-}
+# git description: v0.001-13-g28c86df
+$Plack::Middleware::LogErrors::LogHandle::VERSION = '0.002';
 # ABSTRACT: convert psgix.logger-like logger into an IO::Handle-like object
 
 sub new
@@ -77,9 +66,7 @@ __END__
 
 =pod
 
-=encoding utf-8
-
-=for :stopwords Karen Etheridge psgi psgix middlewares irc
+=encoding UTF-8
 
 =head1 NAME
 
@@ -87,7 +74,7 @@ Plack::Middleware::LogErrors - Map psgi.errors to psgix.logger or other logger
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -116,6 +103,8 @@ Using an explicitly defined logger:
 
 =head1 DESCRIPTION
 
+=for stopwords psgi psgix middlewares
+
 C<psgi.errors> defaults to C<stderr> in most backends, which results in
 content going somewhere unhelpful like the server console.
 
@@ -134,18 +123,16 @@ is used).
 
 =head1 CONFIGURATION
 
-=over 4
-
-=item * C<logger>
+=head2 C<logger>
 
 A code reference for logging messages, that conforms to the
 L<psgix.logger|PSGI::Extensions/SPECIFICATION> specification.
 If not provided, C<psgix.logger> is used, or the application will generate an
 error at runtime if there is no such logger configured.
 
-=back
-
 =head1 SUPPORT
+
+=for stopwords irc
 
 Bugs may be submitted through L<the RT bug tracker|https://rt.cpan.org/Public/Dist/Display.html?Name=Plack-Middleware-LogErrors>
 (or L<bug-Plack-Middleware-LogErrors@rt.cpan.org|mailto:bug-Plack-Middleware-LogErrors@rt.cpan.org>).
@@ -161,7 +148,7 @@ L<PSGI::Extensions> - the definition of C<psgix.logger>
 
 =item *
 
-L<PSGI/The-Error-Stream> - the definition of C<psgi.errors>
+L<PSGI/"The Error Stream"> - the definition of C<psgi.errors>
 
 =item *
 
@@ -170,10 +157,6 @@ L<Plack::Middleware::LogWarn> - maps warnings to C<psgi.errors>
 =item *
 
 L<Plack::Middleware::HTTPExceptions> - maps exceptions to C<psgi.errors>
-
-=item *
-
-L<Plack::Middleware::Log::Contextual> - use a L<Log::Contextual> logger for C<psgix.logger>
 
 =item *
 
